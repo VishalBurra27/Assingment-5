@@ -1,0 +1,102 @@
+\documentclass{beamer}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{AI1110\\Assignment 5 } 
+\author{Burra Vishal Mathews \\ CS21BTECH11010}
+
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\logo{}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+\begin{frame}{Question}
+\section{Question}
+The order statistics of the random variables $x_i$ are n random variables $y_k$ defined
+as follows: For a specific outcome $\zeta$, the random variables $x_i$; take the values $x_i(\zeta)$.
+Ordering these numbers. we obtain the sequence
+\begin{equation}
+    x_{r_1}(\zeta)\leq\hdots\leq x_{r_k}\leq\hdots \leq x_{r_n}
+\end{equation}
+and we define the random variable $y_k$ such that
+\begin{equation}
+    y_1(\zeta)=x_{r_1}(\zeta)\leq\hdots\leq y_k(\zeta)=x_{r_k}(\zeta)\leq\hdots\leq y_n(\zeta)=x_{r_n}(\zeta)
+\end{equation}
+
+We note that for a specific $i$, the values $x_i(\zeta)$ of $x_i$ occupy different locations in the above ordering as $\zeta$ changes.
+We maintain that the density $f_k(y)$ of the $k$th statistic $y_k$ is given by :
+\begin{equation}
+    f_k(y)=\frac{n!}{(k-1)!(n-k)!}F_x^{k-1}(y)\sbrak{1-F_x(y)}^{n-k}f_x(y)
+\end{equation}
+where $F_x(x)$ is the distribution of the i.i.d. random variables $x_i$ and $f_x(x)$ is their density.
+    
+\end{frame}
+
+\begin{frame}{Solution}
+\section{Solution}
+\textbf{Proof:}\\
+Here ; $f_k(y)dy$ is p.d.f. $\And$ $F_x(x)$ is c.d.f.
+The event $B=\cbrak{\pr{y<y_k\leq y+dy}}$ occurs if and only if exactly $(k-1)$ of the random variables $x_i$ are less than $y$ and one is in the interval $(y,y+dy)$. The events be $A_1,A_2,A_3$.\\
+\begin{enumerate}
+    \item $A_1=\cbrak{x\leq y}$
+    \item $A_2=\cbrak{y<x\leq y+dy}$
+    \item $A_3=\cbrak{x>y+dy}$
+\end{enumerate}
+And partitions be : 
+\begin{enumerate}
+    \item $\pr{A_1}=F_x(y)$
+    \item $\pr{A_2}=f_x(y)dy$
+    \item $\pr{A_3}=1-F_x(y)$
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Solution}
+The event B happens if and only if $A_1$ occurs $k-1$ times, $A_2$ occurs once, and $A_3$ occurs $n-k$ times. With $k_1=k-1$, $k_2=1$, $k_3=n-k$.
+\begin{equation}
+    \pr{B}=\frac{n!}{(k-1)!.1!.(n-k)!}Pr^{k-1}(A_1)Pr(A_2)Pr^{n-k}(A_3)
+\end{equation}
+
+As,
+\begin{equation}
+    f_1(y)=n\sbrak{1-F_x(y)}^{n-1}f_x(y)
+\end{equation}
+
+\begin{equation}
+    f_n(y)=nF_x^n-1(y)f_x(y)
+\end{equation}
+\begin{equation*}
+    f_k(y)=\frac{n!}{(k-1)!(n-k)!}F_x^{k-1}(y)\sbrak{1-F_x(y)}^{n-k}f_x(y)
+\end{equation*}
+
+
+
+
+\end{frame}
+
+\end{document}
